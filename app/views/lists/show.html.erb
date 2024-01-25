@@ -1,15 +1,45 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.image_url %>);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
 <div class="container">
-  <h1 class="my-3"><%= @list.name %></h1>
+  <div class="d-flex my-3 justify-content-evenly">
+    <div class="p-1">
+      <%= link_to "Create new Bookmark", new_list_bookmark_path(@list), class: "btn btn-ghost btn-green" %>
+    </div>
+    <div class="p-1">
+      <%= link_to "Edit List", edit_list_path(@list), class: "btn btn-ghost" %>
+    </div>
+    <div class="p-1">
+      <%= link_to "Delete List", list_path(@list), class: "btn btn-ghost btn-red", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    </div>
+    <div class="p-1">
+      <%= link_to "Back to my Lists", lists_path, class: "btn btn-ghost" %>
+    </div>
+  </div>
 
+
+  <div class="container mx-auto mt-4">
+    <div class="row">
+        <% @list.bookmarks.each do |bookmark| %>
+          <div class="col-md-4 my-3">
+            <div class="card-trip">
+              <img src=<%= bookmark.movie.poster_url %>  />
+              <div class="card-trip-infos">
+                <div class="d-flex">
+                  <h2><%= bookmark.movie.title %></h2>
+                  <p class="ps-1"> - <%= bookmark.movie.rating %> / 10 ⭐</p>
+                </div>
+                <div class="card-trip-overview"><%= bookmark.movie.overview %></div>
+                <span class="card-trip-delete"><%= link_to "<i class='fa-solid fa-trash-can'></i>".html_safe, bookmark_path(bookmark), class: "fs-4 text-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
   <ul class="list-group">
-    <% @list.bookmarks.each do |bookmark| %>
-      <li class="list-group-item">
-        <h3><%= bookmark.movie.title %></h3>
-        <p><%= bookmark.movie.overview %></p>
-        <p>My comment: <%= bookmark.comment %></p>
-      </li>
-    <% end %>
   </ul>
 
-  <%= link_to "Back to my Lists", lists_path %>
 </div>

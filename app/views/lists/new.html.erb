@@ -1,7 +1,12 @@
-<div class="container">
-  <h1>Create new List</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));">
+  <div class="container">
+    <h1>Create new List</h1>
+  </div>
+</div>
+<div class="container my-3">
   <%= simple_form_for @list do |f| %>
     <%= f.input :name %>
+    <%= f.input :image_url %>
     <%= f.submit "Create List", class: "btn btn-primary" %>
   <% end %>
 </div>

@@ -6,11 +6,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
   <body>
+    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <div class="fs-2">🍿</div>
+        </a>
+      </div>
+    </div>
     <%= yield %>
   </body>
 </html>
