@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="my-3"><%= @list.name %></h1>
+
+  <ul class="list-group">
+    <% @list.bookmarks.each do |bookmark| %>
+      <li class="list-group-item">
+        <h3><%= bookmark.movie.title %></h3>
+        <p><%= bookmark.movie.overview %></p>
+        <p>My comment: <%= bookmark.comment %></p>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= link_to "Back to my Lists", lists_path %>
+</div>
