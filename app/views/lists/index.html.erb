@@ -9,7 +9,7 @@
     <% @lists.each do |list| %>
       <div class="col-md-4 my-3">
         <%= link_to list_path(list), class: "text-decoration-none" do %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.key ? (cl_image_path list.photo.key, crop: :fill) : '' %>)">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached ? (cl_image_path list.photo.key, crop: :fill) : '' %>)">
             <%= list.name %>
           </div>
         <% end %>
